@@ -12,6 +12,7 @@
   "description": "",
   "dependencies": {
     "@prisma/client": "5.10.2",
+    "dayjs": "^1.11.19",
     "dotenv": "^17.3.1",
     "fastify": "^5.7.4",
     "mongodb": "^7.1.0",
