@@ -1,11 +1,15 @@
 import type { FastifyInstance } from "fastify";
 import createTransaction from "../controllers/transactions/createTransaction.controller";
 import { zodToJsonSchema } from "zod-to-json-schema";
+import { getTransactions } from "../controllers/transactions/getTransactions.controller";
+import { getTransactionsSummary } from "../controllers/transactions/getTrasactionsSummary.controller";
 import { 
   createTransactionSchema, 
-  getTransactionSchema } 
+  deleteTransactionSchema, 
+  getTransactionSchema, 
+  getTransactionsSummarySchema} 
 from "../schemas/transaction.schema";
-import { getTransactions } from "../controllers/transactions/getTransactions.controller";
+import { deleteTransaction } from "../controllers/transactions/deleteTransaction.controller";
 
 const transactionRoutes = async (fastify: FastifyInstance)=> {
   fastify.route({
@@ -26,7 +30,26 @@ const transactionRoutes = async (fastify: FastifyInstance)=> {
       querystring: zodToJsonSchema(getTransactionSchema as any)
     },
     handler: getTransactions
-  })
+  });
+
+  //Buscar o resumo
+  fastify.route({
+    method: 'GET',
+    url: '/summary',
+    schema: {
+      querystring: zodToJsonSchema(getTransactionsSummarySchema as any)
+    },
+    handler: getTransactionsSummary
+  });
+
+  //Deletar
+  fastify.route({
+    method: 'DELETE',
+    url: '/:id',
+    schema: {
+      params: zodToJsonSchema(deleteTransactionSchema as any)
+    },
+    handler: deleteTransaction })
 };
 
 export default transactionRoutes;
