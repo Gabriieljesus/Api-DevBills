@@ -8,7 +8,7 @@ export const deleteTransaction = async (
   request: FastifyRequest<{ Params: DeleteTransactionParams }>,
   reply: FastifyReply,
 ): Promise<void> => {
-  const userId = 'HOHFIBFUHE782Y5'; // Substitua pelo ID do usuário autenticados
+  const userId = request.userId; // Substitua pelo ID do usuário autenticados
   const { id } = request.params;
 
   if (!userId) {
