@@ -7,15 +7,15 @@ const initializeFirebaseAdmin = ():void => {
   const { FIREBASE_CLIENT_EMAIL,  FIREBASE_PRIVATE_KEY, FIREBASE_PROJECT_ID } = env;
 
   if(!FIREBASE_CLIENT_EMAIL || !FIREBASE_PRIVATE_KEY || !FIREBASE_PROJECT_ID) {
-    throw new Error("🚨 Falha ao iniciar Firebase - Faltando credencias")
+    throw new Error("🚨 Falha ao iniciar Firebase - Faltando credenciais")
   }
 
   try {
     admin.initializeApp({
       credential: admin.credential.cert({
         projectId: FIREBASE_PROJECT_ID,
-        privateKey: FIREBASE_PRIVATE_KEY,
-        clientEmail: FIREBASE_CLIENT_EMAIL
+        clientEmail: FIREBASE_CLIENT_EMAIL,
+        privateKey: FIREBASE_PRIVATE_KEY?.replace(/\\n/g, '\n')
       })
     })
   } catch (error) {

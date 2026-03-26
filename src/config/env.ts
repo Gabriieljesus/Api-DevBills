@@ -1,9 +1,7 @@
-import { optional, z } from "zod";
+import { z } from "zod";
 import dotenv from "dotenv";
 
 dotenv.config();
-
-
 
 const envSchema = z.object({
   PORT: z.string().transform(Number).default("3001"),
@@ -13,8 +11,8 @@ const envSchema = z.object({
   }),
 
   FIREBASE_PROJECT_ID: z.string().optional(),
-  FIREBASE_PRIVATE_KEY:  z.string().optional(),
-  FIREBASE_CLIENT_EMAIL:  z.string().optional(),
+  FIREBASE_PRIVATE_KEY: z.string().optional(),
+  FIREBASE_CLIENT_EMAIL: z.string().optional(),
 });
 
 const _env = envSchema.safeParse(process.env);

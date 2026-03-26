@@ -21,7 +21,7 @@ const transactionRoutes = async (fastify: FastifyInstance)=> {
     method: 'POST',
     url: '/',
     schema: {
-      body: zodToJsonSchema(createTransactionSchema as any)
+      body: zodToJsonSchema(createTransactionSchema)
     },
     handler: createTransaction
   });
@@ -31,7 +31,7 @@ const transactionRoutes = async (fastify: FastifyInstance)=> {
     method: 'GET',
     url: '/',
     schema: {
-      querystring: zodToJsonSchema(getTransactionSchema as any)
+      querystring: zodToJsonSchema(getTransactionSchema)
     },
     handler: getTransactions
   });
@@ -41,7 +41,7 @@ const transactionRoutes = async (fastify: FastifyInstance)=> {
     method: 'GET',
     url: '/summary',
     schema: {
-      querystring: zodToJsonSchema(getTransactionsSummarySchema as any)
+      querystring: zodToJsonSchema(getTransactionsSummarySchema)
     },
     handler: getTransactionsSummary
   });
@@ -51,7 +51,7 @@ const transactionRoutes = async (fastify: FastifyInstance)=> {
     method: 'DELETE',
     url: '/:id',
     schema: {
-      params: zodToJsonSchema(deleteTransactionSchema as any)
+      params: zodToJsonSchema(deleteTransactionSchema)
     },
     handler: deleteTransaction })
 };
