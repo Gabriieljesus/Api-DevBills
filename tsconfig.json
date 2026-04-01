@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "ES2020", // Transpila para uma versão moderna do JavaScript (ES2021)
     "module": "commonjs", // Usa o sistema de módulos CommonJS, necessário para Node.js
-    "moduleResolution": "node", // Resolve os imports como o Node faz, buscando em node_modules
+    "moduleResolution": "bundler", // Resolve os imports como o Node faz, buscando em node_modules
     "lib": [
       "ES2020"
     ], // Permite usar funcionalidades da linguagem baseadas no ES2021
