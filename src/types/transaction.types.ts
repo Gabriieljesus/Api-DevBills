@@ -17,5 +17,5 @@ export interface TransactionSummary {
   totalExpenses: number;
   totalIncomes: number;
   balance: number;
-  expensesBycategory: CategorySummary[];
+  expensesByCategory: CategorySummary[];
 }
