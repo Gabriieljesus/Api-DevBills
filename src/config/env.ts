@@ -6,9 +6,9 @@ dotenv.config();
 const envSchema = z.object({
   PORT: z.string().transform(Number).default("3001"),
   DATABASE_URL: z.string().min(5, "DATABASE_URL é obrigatória"),
-  NODE_ENV: z.enum(["dev", "prod", "test"], {
-    message: "NODE ENV deve ser dev, test ou prod",
-  }),
+  NODE_ENV: z.enum(["dev", "prod", "test", "production"], {
+  message: "NODE ENV deve ser dev, test ou prod",
+}),
 
   FIREBASE_PROJECT_ID: z.string().optional(),
   FIREBASE_PRIVATE_KEY: z.string().optional(),
