@@ -12,9 +12,9 @@ const startServer = async () => {
   try {
     await prismaConnect();
     await initializeGlobalCategories();
-    await app.listen({ port: PORT, host: '0.0.0.0' }).then(() => {
-      console.log(`Server is running on port ${PORT}`);
-    });
+    await app.listen({ port: PORT, host: '0.0.0.0', listenTextResolver: (address) => {
+    return `Server is running on ${address}`;
+  }});
   } catch (err) {
     console.error(err);
   }

@@ -6,8 +6,9 @@ import cors from "@fastify/cors";
 
 const app: FastifyInstance = Fastify({
   logger: {
-     level: env.NODE_ENV === "dev" ? "info" : "error",
+    level: env.NODE_ENV === "dev" ? "info" : "error",
   },
+  forceCloseConnections: true,
 });
 
 app.register(cors, {
